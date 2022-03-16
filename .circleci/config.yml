@@ -8,7 +8,10 @@ jobs:
       - checkout
       - run:
           name: run tests
-          command: python3 manage.py test
+          command: |
+            python3 -m venv venv
+            source venv/bin/activate
+            python3 manage.py test
 
 workflows:
   build-and-test-workflow:
