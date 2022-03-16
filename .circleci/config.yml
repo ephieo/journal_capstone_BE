@@ -18,9 +18,8 @@ jobs:
           name: "Installing dependencies"
           command: |
             python3 -m venv venv
-            . venv/bin/activate
-            pip install --upgrade pip
-            pip install -r requirements.txt  
+            . venv/bin/activate 
+            pip3.9 install -r requirements-dev.txt
       - restore_cache:
           keys:
             - processing-{{ arch }}-v2-{{ checksum "requirements.txt" }}-{{ checksum "requirements-dev.txt" }}
