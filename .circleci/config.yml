@@ -9,16 +9,22 @@ jobs:
     # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
     docker:
-      - image: cimg/python:3.10.2
+      - image: cimg/python:3.7
     # Add steps to the job
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - processing-{{ arch }}-v2-{{ checksum "requirements.txt" }}-{{ checksum "requirements-dev.txt" }}
+            - processing-{{ arch }}-v2-
       - run:
-          name: "Say hello"
+          name: "Installing dependencies"
           command: |
             python3 -m venv venv
-            source venv/bin/activate
+            . venv/bin/activate
+            pip install --upgrade pip
+            pip install -r requirements.txt  
       - run:
           name: Running tests
           command: |
@@ -26,6 +32,10 @@ jobs:
             python3 manage.py test
             $HOME/.local/bin/coverage run --source "journal_app" manage.py test -v 2 && coverage report
             $HOME/.local/bin/coverage html  # open htmlcov/index.html in a browser
+      - save_cache:
+          key: processing-{{ arch }}-v2-{{ checksum "requirements.txt" }}-{{ checksum "requirements-dev.txt" }}
+          paths:
+            - venv
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
