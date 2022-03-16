@@ -14,6 +14,11 @@ jobs:
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "YOURPATH/requirements.txt" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
       - run:
           name: "Say hello"
           command: |
@@ -27,6 +32,10 @@ jobs:
             python3 manage.py test
             $HOME/.local/bin/coverage run --source "journal_app" manage.py test -v 2 && coverage report
             $HOME/.local/bin/coverage html  # open htmlcov/index.html in a browser
+      - save_cache:
+          paths:
+            - ./venv
+          key: v1-dependencies-{{ checksum "YOURPATH/requirements.txt" }}
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
