@@ -34,8 +34,6 @@ jobs:
             . venv/bin/activate
             pip install coverage
             python3 manage.py test
-            $HOME/.local/bin/coverage run --source "journal_app" manage.py test -v 2 && coverage report
-            $HOME/.local/bin/coverage html  # open htmlcov/index.html in a browser
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
