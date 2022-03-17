@@ -1,0 +1,10 @@
+Django==3.0.5
+django-cors-headers==3.7.0
+django-graphql-jwt==0.3.1
+graphene==2.1.8
+graphene-django==2.15.0
+graphql-core==2.3.2
+graphql-relay==2.0.1
+pylint==2.8.2
+python-jsonrpc-server==0.4.0
+python-language-server==0.36.2
