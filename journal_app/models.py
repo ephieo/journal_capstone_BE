@@ -1,13 +1,14 @@
 from django.db import models
-import datetime
+from django.utils import timezone
 
 
 class Posts(models.Model):
     title = models.CharField(max_length=100)
-    date = models.DateField(auto_now_add=True)
+    content = models.TextField(default='SOME STRING')
+    date = models.DateField(default=timezone.now)
 
     def __str__(self):
         return self.title
 
-    def num(digit):
-        return digit
+    class Meta:
+        verbose_name_plural = "Posts"
