@@ -32,6 +32,7 @@ jobs:
           name: Running tests
           command: |
             . venv/bin/activate
+            pip install coverage
             python3 manage.py test
             $HOME/.local/bin/coverage run --source "journal_app" manage.py test -v 2 && coverage report
             $HOME/.local/bin/coverage html  # open htmlcov/index.html in a browser
