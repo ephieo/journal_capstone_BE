@@ -21,6 +21,7 @@ jobs:
             python3 -m pip install virtualenv
             python3 -m venv venv
             . venv/bin/activate
+            pip install django
       - run:
           name: Running tests
           command: |
