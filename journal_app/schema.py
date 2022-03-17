@@ -34,4 +34,11 @@ class Query(graphene.ObjectType):
         return Quotes.objects.get(pk=id)
 
 
-schema = graphene.Schema(query=Query)
+# class CategoryMutation(graphene.Mutation):
+
+
+# class Mutation(graphene.ObjectType):
+#     update_category = CategoryMutation.Field()
+
+
+schema = graphene.Schema(query=Query, mutation=Mutation)
