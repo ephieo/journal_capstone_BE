@@ -1,3 +1,5 @@
 .coverage
 htmlcov/
 venv/
+core/__pycache__/
+.db.sqlite3

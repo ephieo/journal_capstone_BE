@@ -1,3 +1,5 @@
+from unicodedata import category
+from urllib.request import Request
 import graphene
 from graphene_django import DjangoObjectType
 from .models import Posts, Quotes
@@ -34,11 +36,95 @@ class Query(graphene.ObjectType):
         return Quotes.objects.get(pk=id)
 
 
-# class CategoryMutation(graphene.Mutation):
+class AddQuoteMutation(graphene.Mutation):
+    class Arguments:
+        title = graphene.String(required=True)
+
+    quote = graphene.Field(QuoteType)
+
+    @classmethod
+    def mutate(cls, root, info, title):
+        quote = Quotes(title=title)
+        quote.save()
+        return AddQuoteMutation(quote=quote)
 
 
-# class Mutation(graphene.ObjectType):
-#     update_category = CategoryMutation.Field()
+class AddPostMutation(graphene.Mutation):
+    class Arguments:
+        title = graphene.String(required=True)
+
+    post = graphene.Field(PostType)
+
+    @classmethod
+    def mutate(cls, root, info, title):
+        post = Posts(title=title)
+        post.save()
+        return AddPostMutation(post=post)
+
+
+class UpdatePostMutation(graphene.Mutation):
+    class Arguments:
+        id = graphene.ID()
+        title = graphene.String(required=True)
+
+    post = graphene.Field(PostType)
+
+    @classmethod
+    def mutate(cls, root, info, title, id):
+        post = Posts.objects.get(id=id)
+        post.title = title
+        post.save()
+        return UpdatePostMutation(post=post)
+
+
+class UpdateQuoteMutation(graphene.Mutation):
+    class Arguments:
+        id = graphene.ID()
+        title = graphene.String(required=True)
+
+    quote = graphene.Field(QuoteType)
+
+    @classmethod
+    def mutate(cls, root, info, title, id):
+        quote = Quotes.objects.get(id=id)
+        quote.title = title
+        quote.save()
+        return UpdateQuoteMutation(quote=quote)
+
+
+class DeletePostMutation(graphene.Mutation):
+    class Arguments:
+        id = graphene.ID()
+
+    post = graphene.Field(PostType)
+
+    @classmethod
+    def mutate(cls, root, info, id):
+        post = Posts.objects.get(id=id)
+        post.delete()
+        return
+
+
+class DeleteQuoteMutation(graphene.Mutation):
+    class Arguments:
+        id = graphene.ID()
+
+    quote = graphene.Field(QuoteType)
+
+    @classmethod
+    def mutate(cls, root, info, id):
+        quote = Quotes.objects.get(id=id)
+        quote.delete()
+        return
+
+
+class Mutation(graphene.ObjectType):
+    add_post = AddPostMutation.Field()
+    add_quote = AddQuoteMutation.Field()
+    update_post = UpdatePostMutation.Field()
+    update_quote = UpdateQuoteMutation.Field()
+    delete_post = DeletePostMutation.Field()
+    delete_quote = DeleteQuoteMutation.Field()
 
 
 schema = graphene.Schema(query=Query, mutation=Mutation)
