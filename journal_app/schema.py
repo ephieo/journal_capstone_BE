@@ -8,13 +8,13 @@ from .models import Posts, Quotes
 class PostType(DjangoObjectType):
     class Meta:
         model = Posts
-        fields = ("id", "title", "content")
+        fields = ("id", "title", "content", "img_link")
 
 
 class QuoteType(DjangoObjectType):
     class Meta:
         model = Quotes
-        fields = ("id", "title", "content")
+        fields = ("id", "title", "content", "img_link")
 
 
 class Query(graphene.ObjectType):
