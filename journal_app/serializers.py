@@ -11,4 +11,4 @@ class PostSerializer(serializers.HyperlinkedModelSerializer):
 class QuoteSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Quotes
-        fields = ("id", "title", "content")
+        fields = ("id", "title", "content", "img_link")

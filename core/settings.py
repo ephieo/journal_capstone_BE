@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'graphene_django',
     'coverage',
     'rest_framework',
+    'corsheaders'
+
 ]
 
 MIDDLEWARE = [
@@ -54,6 +56,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
 ]
 
 ROOT_URLCONF = 'core.urls'
@@ -135,3 +139,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 GRAPHENE = {
     'SCHEMA': 'journal_app.schema.schema'
 }
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000"
+]
