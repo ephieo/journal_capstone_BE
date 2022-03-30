@@ -14,14 +14,14 @@ Set up requirements :
 
 You can view the api view via the links below :
 
-##### Make sure the server is running
+#### Make sure the server is running
 
 - http://127.0.0.1:8000/posts/
 - http://127.0.0.1:8000/quotes/
 
 ### Acessing Django administration GUI :
 
-##### Make sure the server is running
+#### Make sure the server is running
 
 - access this site : http://127.0.0.1:8000/admin/journal_app/posts/
 
