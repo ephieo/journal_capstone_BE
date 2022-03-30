@@ -1,5 +1,49 @@
 # JOURNAL APP
 
+### How to run :
+
+Clone repo locally :
+
+- `git clone https://github.com/ephieo/journal_capstone_BE.git`
+- `cd journal_capstone_BE/`
+
+Set up requirements :
+
+- `pip install -r requirements.txt`
+- `python3 manage.py runserver`
+
+You can view the api view via the links below :
+
+- http://127.0.0.1:8000/posts/
+- http://127.0.0.1:8000/quotes/
+
+### Acessing Django administration GUI :
+
+- Make sure the server is running
+
+* access this site : http://127.0.0.1:8000/admin/journal_app/posts/
+
+- Login : journal
+- Password : capstone
+
+### Test Query examples using Insomnia :
+
+Run this POST GraphQL query :
+
+`mutation { addPost(title:"hiiiiiii",content:"byyyyyye"){ post{title,content} } }`
+
+via this url :
+
+- http://127.0.0.1:8000/graphql
+
+Run this GET GraphQL query :
+
+`query{allPosts{ id content date }}`
+
+via this url :
+
+- http://127.0.0.1:8000/posts/
+
 ### Project Description :
 
 #### Requirements

@@ -5,10 +5,10 @@ from .models import Posts, Quotes
 class PostSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Posts
-        fields = ("id", "title", "content")
+        fields = ("id", "title", "date", "content")
 
 
 class QuoteSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Quotes
-        fields = ("id", "title", "content", "img_link")
+        fields = ("id", "title", "date", "content")

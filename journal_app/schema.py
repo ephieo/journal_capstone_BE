@@ -8,13 +8,13 @@ from .models import Posts, Quotes
 class PostType(DjangoObjectType):
     class Meta:
         model = Posts
-        fields = ("id", "title", "content", "img_link")
+        fields = ("id", "title", "date", "content")
 
 
 class QuoteType(DjangoObjectType):
     class Meta:
         model = Quotes
-        fields = ("id", "title", "content", "img_link")
+        fields = ("id", "title", "date", "content")
 
 
 class Query(graphene.ObjectType):
@@ -52,12 +52,13 @@ class AddQuoteMutation(graphene.Mutation):
 class AddPostMutation(graphene.Mutation):
     class Arguments:
         title = graphene.String(required=True)
+        content = graphene.String(required=True)
 
     post = graphene.Field(PostType)
 
     @classmethod
-    def mutate(cls, root, info, title):
-        post = Posts(title=title)
+    def mutate(cls, root, info, title, content):
+        post = Posts(title=title, content=content)
         post.save()
         return AddPostMutation(post=post)
 
