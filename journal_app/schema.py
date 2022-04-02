@@ -39,12 +39,13 @@ class Query(graphene.ObjectType):
 class AddQuoteMutation(graphene.Mutation):
     class Arguments:
         title = graphene.String(required=True)
+        content = graphene.String(required=True)
 
     quote = graphene.Field(QuoteType)
 
     @classmethod
-    def mutate(cls, root, info, title):
-        quote = Quotes(title=title)
+    def mutate(cls, root, info, title, content):
+        quote = Quotes(title=title, content=content)
         quote.save()
         return AddQuoteMutation(quote=quote)
 
