@@ -1,5 +1,7 @@
 # JOURNAL APP
 
+### (Backend Repo)[https://github.com/ephieo/journal_capstone_BE] :
+
 ### How to run :
 
 Clone repo locally :
@@ -19,7 +21,13 @@ You can view the api view via the links below :
 - http://127.0.0.1:8000/posts/
 - http://127.0.0.1:8000/quotes/
 
-### Acessing Django administration GUI :
+### Versions :
+
+- Python 3.9.10
+- Django 3.0.5
+- graphene 2.1.8
+
+### Accessing Django administration GUI :
 
 #### Make sure the server is running
 
