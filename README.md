@@ -27,7 +27,8 @@ You can view the api view via the links below :
 - Django 3.0.5
 - graphene 2.1.8
 
-### (How to install python)[https://realpython.com/installing-python/]
+- How to install python :
+  https://realpython.com/installing-python/
 
 ### Accessing Django administration GUI :
 
