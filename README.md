@@ -88,4 +88,4 @@ If in doubt about the scope of the project, reach out to the client on Slack.
 The remaining stack is at your discretion. Pick the web framework, GraphQL support (if needed)
 and database technology. Feel free to use any additional libraries eg. components libraries.
 
-### Developr - Ephrathah Oyedoh
+### Developer - Ephrathah Oyedoh
