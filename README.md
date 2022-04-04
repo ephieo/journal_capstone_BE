@@ -1,6 +1,8 @@
 # JOURNAL APP
 
-### (Backend Repo)[https://github.com/ephieo/journal_capstone_BE] :
+### Backend Repo:
+
+https://github.com/ephieo/journal_capstone_BE
 
 ### How to run :
 
