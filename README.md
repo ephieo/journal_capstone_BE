@@ -23,7 +23,7 @@ You can view the api view via the links below :
 
 ### Versions :
 
-- Python 3.9.10
+- (Python)[https://realpython.com/installing-python/] 3.9.10
 - Django 3.0.5
 - graphene 2.1.8
 
